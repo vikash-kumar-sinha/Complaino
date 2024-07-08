@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>new complain</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <link rel="stylesheet" href=".//newcomplainstyle.css">
+</head>
+<body>
+    <div class="container">
+    <form action="" method="get" id="newform" >
+   <div class="newhead"><h1>New Complain</h1></div> 
+    <p class="comment">Register your complain here.(* are mandatory section)</p>
+    
+    <label > Name *  </label>
+    <input type="text" name="name" id="name" required placeholder="Please enter your name">
+     <label >Registration no. *</label>  
+     <input type="number" name="regno" id="regno" required placeholder="Please enter your registration number">
+     <label >Email * </label>
+     <input type="email" name="email" id="email" required placeholder="Please enter your email address">
+     <label >Phone * </label>
+     <input type="number" name="phone" id="phone"  required placeholder="Please enter your phone number">
+     <label >Department of Complain * </label>
+        <select name="doc" id="doc" required>
+            <option value="">--Select the Department--</option>
+            <option value="sports">Sports</option>
+            <option value="transportation">Transportation</option>
+            <option value="mess&food">Mess & Food</option>
+            <option value="internet and wifi">Internet & WIFI</option>
+            <option value="cleaning">Cleaning</option>
+            <option value="other">Other</option>
+            
+            
+        </select>
+    
+    <label > Message *</label>
+     <textarea type="text" name="message" id="message" cols="100" rows="8" required placeholder="Include all details you can"></textarea>
+    <input type="button" value="submit" id="csubmit" name="csubmit">
+</form>
+
+
+</div>
+<div class="backtohome">
+    <a href="index.html"><h3>Back to Home</h3></a>
+    
+  </div>
+
+
+<!--<script type="module">
+    // Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyAxDmLVW0KumR-7LTX5blfLxWn1uaae5PQ",
+  authDomain: "new-complain2.firebaseapp.com",
+  databaseURL: "https://new-complain2-default-rtdb.firebaseio.com",
+  projectId: "new-complain2",
+  storageBucket: "new-complain2.appspot.com",
+  messagingSenderId: "380768141249",
+  appId: "1:380768141249:web:3ee05018711483926e7940"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+import { collection, addData } from "firebase/firestore"; 
+document.getElementById('csubmit').addEventListener('click',addData);
+
+   function addData() {
+    var name = document.getElementById('name').value;
+    var rego = document.getElementById('regno').value;
+    var email = document.getElementById('email').value;
+    var phone = document.getElementById('phone').value;
+    var mesage = document.getElementById('message').value;
+
+    var obj = {
+        name:name,
+        regno:regno,
+        email:email,
+        phone:phone,
+        message:message
+    }
+
+    firebase.firestore().collection('users').add(obj).then(doc=>{
+        console.log(doc.id)
+    })
+    .catch(e=>{
+        console.log(e)
+    })
+    
+
+
+//try {
+//const docRef = await addDoc(collection(db, "users"), {
+  //  first: "Ada",
+  //  last: "Lovelace",
+  //  born: 1815
+  //});
+ // console.log("Document written with ID: ", docRef.id);
+//} catch (e) {
+//  console.error("Error adding document: ", e);
+//}
+ // </script>-->
+
+<!--<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
+    
+    import { getFirestore } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js";
+    import { getFirestore, collection, getDocs } from 'https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js';
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    (function() {
+    const firebaseConfig = {
+  apiKey: "AIzaSyAxDmLVW0KumR-7LTX5blfLxWn1uaae5PQ",
+  authDomain: "new-complain2.firebaseapp.com",
+  databaseURL: "https://new-complain2-default-rtdb.firebaseio.com",
+  projectId: "new-complain2",
+  storageBucket: "new-complain2.appspot.com",
+  messagingSenderId: "380768141249",
+  appId: "1:380768141249:web:3ee05018711483926e7940"
+};
+  
+    // Initialize Firebase
+   // const app = initializeApp(firebaseConfig);
+   firebase.initializeApp(firebaseConfig);
+
+   var push_to_firebase = function(obj){
+    alert("Thanks for submitting complain.")
+    var db = firebase.firestore();
+
+    db.collection("messages").add({
+        name: obj["name"],
+        regno: obj["regno"],
+        email: obj["email"],
+        phone: obj["phone"],
+        message: obj["message"],
+        timestamp:Date.now()
+    })
+    .then(function(docRef){
+        console.log("Message sent, ID: ", docRef.id);
+       // alert("Thanks for submitting complain.")
+        console.reload();
+    })
+    .catch(function(error){
+       // alert("Complain not registered.")
+       console.error("Complain not registered: ",error);
+    });
+}
+  
+
+   var addData = function() {
+    var name = document.getElementById("name");
+    var rego = document.getElementById("regno");
+    var email = document.getElementById("email");
+    var phone = document.getElementById("phone");
+    var mesage = document.getElementById("message");
+
+    var obj = {
+        "name":name.value,
+        "regno":regno.value,
+        "email":email.value,
+        "phone":phone.value,
+        "message":message.value
+    }
+
+    push_to_firebase(obj);
+
+
+   }
+   document.getElementById("csubmit").addEventListener("click",addData);
+   
+})();
+    
+   
+  </script>-->
+  
+
+  <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-firestore.js"></script>
+  <script type="text/javascript">
+    (function() {
+        const firebaseConfig = {
+  apiKey: "AIzaSyAxDmLVW0KumR-7LTX5blfLxWn1uaae5PQ",
+  authDomain: "new-complain2.firebaseapp.com",
+  databaseURL: "https://new-complain2-default-rtdb.firebaseio.com",
+  projectId: "new-complain2",
+  storageBucket: "new-complain2.appspot.com",
+  messagingSenderId: "380768141249",
+  appId: "1:380768141249:web:3ee05018711483926e7940"
+};
+   
+
+      firebase.initializeApp(firebaseConfig);
+
+      var push_to_firebase = function(data){
+        alert("Thanks for submitting the complain.")
+        var db = firebase.firestore();
+
+        db.collection("messages").add({
+            name: data["name"],
+            regno: data["regno"],
+            email: data["email"],
+            phone: data["phone"],
+            message: data["message"],
+            timestamp: Date.now()
+        })
+        .then(function(docRef) {
+            console.log("Message sent, ID: ", docRef.id);
+            location.reload();
+        })
+        .catch(function(error) {
+            console.error("Message could not be sent: ", error);
+        });
+      }
+
+      var contact_submit = function(){
+        var name = document.getElementById("name");
+        var email = document.getElementById("email");
+        var msg = document.getElementById("message");
+        var regno = document.getElementById("regno");
+        var phone = document.getElementById("phone");
+
+        var data = {
+          "name": name.value,
+          "regno": regno.value,
+          "email": email.value,
+          "phone": phone.value,
+          "message": message.value
+        }
+        push_to_firebase(data);
+
+      }
+
+      document.getElementById("csubmit").addEventListener("click", contact_submit);
+    })();
+  </script>
+   
+</body>
+</html>
